@@ -1,8 +1,8 @@
-import { planetPositionAU, osculatingPositionAU, moonPositionKm, julianCenturiesSinceJ2000, daysSinceEpoch, dateToJD, AU_KM, eclipticPoleAndNode, wrapDeg, DEG2RAD } from "./orbits.js?v=2";
+import { planetPositionAU, osculatingPositionAU, moonPositionKm, julianCenturiesSinceJ2000, daysSinceEpoch, dateToJD, AU_KM, eclipticPoleAndNode, wrapDeg, DEG2RAD } from "./orbits.js?v=3";
 
 const THREE = window.THREE;
 if (!THREE) {
-  document.body.innerHTML = '<div style="padding:40px;color:#fff;font-family:sans-serif">Three.js failed to load (CDN blocked or offline). Nothing else can render.</div>';
+  document.body.innerHTML = '<div style="padding:40px;color:#1B1F27;font-family:sans-serif">Three.js failed to load (CDN blocked or offline). Nothing else can render.</div>';
   throw new Error("THREE.js missing");
 }
 
@@ -19,6 +19,7 @@ const canvas = document.getElementById("gl");
 const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, logarithmicDepthBuffer: true, powerPreference: "high-performance" });
 renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));
 renderer.outputEncoding = THREE.sRGBEncoding;
+renderer.setClearColor(0xeef0f3, 1); // off-white void, not realistic space-black — see styles.css :root for the matching light UI theme
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(50, innerWidth / innerHeight, 0.01, 1e9);
@@ -35,7 +36,11 @@ resize();
 // Sun light (real: only light source, so far sides are genuinely dark)
 const sunLight = new THREE.PointLight(0xffffff, 1, 0, 0); // decay=0: no falloff (auto-exposure convention, per Fable)
 scene.add(sunLight);
-scene.add(new THREE.AmbientLight(0xffffff, 0.06));
+// Slightly higher than a "pure black void" scene would want: against an
+// off-white background a fully-unlit dark side reads as a hole cut out
+// of the planet rather than its real night side. Still clearly dimmer
+// than the sunlit hemisphere.
+scene.add(new THREE.AmbientLight(0xffffff, 0.18));
 
 // ---- universe: bodies built from data.json ----------------------------
 

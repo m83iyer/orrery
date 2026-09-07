@@ -1,11 +1,13 @@
 :root {
-  color-scheme: dark;
-  --ink: #E8EAF0;
-  --ink-soft: #9AA3B5;
-  --ink-faint: #5C6478;
-  --panel: rgba(12, 14, 20, 0.82);
-  --line: rgba(255, 255, 255, 0.12);
-  --accent: #7FB0FF;
+  color-scheme: light;
+  --void: #EEF0F3;
+  --ink: #1B1F27;
+  --ink-soft: #4B5262;
+  --ink-faint: #78808F;
+  --panel: rgba(255, 255, 255, 0.88);
+  --line: rgba(20, 24, 32, 0.14);
+  --accent: #2E63C9;
+  --label-halo: rgba(255, 255, 255, 0.92);
 }
 
 * { box-sizing: border-box; }
@@ -14,7 +16,7 @@ html, body {
   margin: 0;
   width: 100%;
   height: 100%;
-  background: #000;
+  background: var(--void);
   overflow: hidden;
   font-family: -apple-system, "Segoe UI", sans-serif;
   color: var(--ink);
@@ -44,7 +46,7 @@ html, body {
   font-size: 11px;
   font-weight: 600;
   color: var(--ink);
-  text-shadow: 0 1px 3px rgba(0,0,0,0.9), 0 0 8px rgba(0,0,0,0.6);
+  text-shadow: 0 1px 2px var(--label-halo), 0 0 6px var(--label-halo), 0 0 6px var(--label-halo);
   white-space: nowrap;
   pointer-events: auto;
   cursor: pointer;
@@ -62,7 +64,7 @@ html, body {
   box-shadow: 0 0 4px var(--accent);
 }
 .body-label.dim { color: var(--ink-soft); font-weight: 500; font-size: 10px; opacity: 0.85; }
-.body-label:hover { color: #fff; }
+.body-label:hover { color: #000; }
 .body-label.selected { color: var(--accent); }
 
 #hud {
@@ -96,7 +98,7 @@ html, body {
   margin-right: 4px;
 }
 .nav-select, .speed-select {
-  background: rgba(255,255,255,0.06);
+  background: rgba(20,24,32,0.05);
   color: var(--ink);
   border: 1px solid var(--line);
   border-radius: 6px;
@@ -106,7 +108,7 @@ html, body {
 }
 .nav-select { flex: 0 1 220px; }
 .chip-btn {
-  background: rgba(255,255,255,0.06);
+  background: rgba(20,24,32,0.05);
   color: var(--ink);
   border: 1px solid var(--line);
   border-radius: 999px;
@@ -116,7 +118,7 @@ html, body {
   cursor: pointer;
   white-space: nowrap;
 }
-.chip-btn:hover { background: rgba(255,255,255,0.12); }
+.chip-btn:hover { background: rgba(20,24,32,0.1); }
 #help-btn { flex: 0 0 auto; width: 30px; padding: 6px 0; text-align: center; border-radius: 50%; }
 
 .time-bar {
@@ -132,13 +134,13 @@ html, body {
   width: 30px; height: 30px;
   border-radius: 50%;
   border: 1px solid var(--line);
-  background: rgba(255,255,255,0.08);
+  background: rgba(20,24,32,0.06);
   color: var(--ink);
   cursor: pointer;
   font-size: 12px;
   display: flex; align-items: center; justify-content: center;
 }
-.icon-round:hover { background: rgba(255,255,255,0.16); }
+.icon-round:hover { background: rgba(20,24,32,0.12); }
 .date-readout { font-size: 12px; color: var(--ink-soft); min-width: 150px; text-align: center; }
 
 .modal-panel {
