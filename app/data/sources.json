@@ -1,0 +1,49 @@
+[
+  {
+    "url": "https://ssd.jpl.nasa.gov/planets/approx_pos.html",
+    "fetched_utc": "2026-09-07T10:03:01.145564+00:00",
+    "sha256": "9f7b30ca81cc548a879565bb3f70e6899a38ff5877cb1ff16bb04892f9c4d742",
+    "local_file": "/Volumes/Media/AutomationStore/project-artifacts/space-exploration/2026-09-07/raw-fetches/jpl_approx_pos.html"
+  },
+  {
+    "url": "https://ssd.jpl.nasa.gov/planets/phys_par.html",
+    "fetched_utc": "2026-09-07T10:03:02.708238+00:00",
+    "sha256": "e49a487947295c389ba6e5833dd8fb04b63e826d39f70c123881882096e5e68b",
+    "local_file": "/Volumes/Media/AutomationStore/project-artifacts/space-exploration/2026-09-07/raw-fetches/jpl_phys_par.html"
+  },
+  {
+    "url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/pck/pck00011.tpc",
+    "fetched_utc": "2026-09-07T10:07:25.005412+00:00",
+    "sha256": "3dff7b1dbeceaa01f25467767d3fa25816051c85d162d1edf04acb310ee28bb1",
+    "local_file": "/Volumes/Media/AutomationStore/project-artifacts/space-exploration/2026-09-07/raw-fetches/pck00011.tpc",
+    "supplies": [
+      "pole (all bodies)"
+    ]
+  },
+  {
+    "url": "https://ssd.jpl.nasa.gov/sats/elem/",
+    "fetched_utc": "2026-09-07T10:11:48.303873+00:00",
+    "sha256": "1e5e52225cf636b78d0ac602eb5352c5648aa025ba45d61593d824e70779dfdd",
+    "local_file": "/Volumes/Media/AutomationStore/project-artifacts/space-exploration/2026-09-07/raw-fetches/jpl_sats_elem_index.html",
+    "supplies": [
+      "moon orbital elements"
+    ]
+  },
+  {
+    "url": "https://ssd.jpl.nasa.gov/sats/phys_par/",
+    "fetched_utc": "2026-09-07T10:11:49.854440+00:00",
+    "sha256": "0c6323f469e48ac654f7d4dd263ed6c62ad14689218c5451a98da29d625aaf10",
+    "local_file": "/Volumes/Media/AutomationStore/project-artifacts/space-exploration/2026-09-07/raw-fetches/jpl_sats_phys_par.html",
+    "supplies": [
+      "moon radius/mass"
+    ]
+  },
+  {
+    "url": "https://pds-rings.seti.org/saturn/saturn_rings_table.html",
+    "fetched_utc": "2026-09-07T10:13:23Z",
+    "local_file": "raw-fetches/pds_saturn_rings.html",
+    "supplies": [
+      "saturn.rings"
+    ]
+  }
+]

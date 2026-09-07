@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Orrery</title>
+<link rel="stylesheet" href="styles.css?v=1">
+</head>
+<body>
+<canvas id="gl"></canvas>
+<div id="labels"></div>
+<div id="hud">
+  <div class="top-bar panel">
+    <div class="wordmark">ORRERY</div>
+    <select id="nav-select" class="nav-select" aria-label="Jump to a body"></select>
+    <button id="sources-btn" class="chip-btn" title="Sources &amp; Method">Sources</button>
+    <button id="help-btn" class="chip-btn" title="Controls">?</button>
+  </div>
+  <div class="time-bar panel">
+    <button id="play-btn" class="icon-round" title="Play/Pause">&#9658;</button>
+    <select id="speed-select" class="speed-select" aria-label="Time speed"></select>
+    <span id="date-readout" class="date-readout"></span>
+    <button id="now-btn" class="chip-btn" title="Jump to now">Now</button>
+  </div>
+</div>
+<div id="sources-panel" class="modal-panel panel" hidden></div>
+<div id="help-panel" class="modal-panel panel" hidden>
+  <h3>Controls</h3>
+  <ul>
+    <li><b>Drag</b> — look around</li>
+    <li><b>Scroll</b> — move forward / back</li>
+    <li><b>W A S D</b> — fly</li>
+    <li><b>Q / E</b> — down / up</li>
+    <li><b>Click a label</b> — fly to that body</li>
+  </ul>
+  <button class="chip-btn" id="help-close">Close</button>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.147.0/three.min.js"></script>
+<script type="module" src="scene.js?v=1"></script>
+<script type="module" src="ui.js?v=1"></script>
+</body>
+</html>

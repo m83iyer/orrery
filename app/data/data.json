@@ -1,0 +1,1232 @@
+{
+  "meta": {
+    "epoch_jd": 2451545.0,
+    "generated_utc": "2026-09-07T10:03:02.709401+00:00",
+    "obliquity_j2000_deg": 23.4392911
+  },
+  "sun": {
+    "name": "Sun",
+    "radius_km": 696000,
+    "mass_kg": 1.98892e+30,
+    "note": "radius/mass from IAU nominal solar values (published constant, not a JPL SSD table row)",
+    "pole": {
+      "ra_deg": 286.13,
+      "ra_rate_per_century": 0.0,
+      "dec_deg": 63.87,
+      "dec_rate_per_century": 0.0,
+      "pm_deg": 84.176,
+      "pm_rate_per_day": 14.1844
+    },
+    "texture": "assets/textures/sun.jpg"
+  },
+  "planets": [
+    {
+      "id": "mercury",
+      "name": "Mercury",
+      "radius_km": 2439.4,
+      "mass_kg": 3.3010299999999994e+23,
+      "rotation_period_hr": 1407.5088,
+      "retrograde_rotation": false,
+      "albedo": 0.106,
+      "elements": {
+        "a_au": [
+          0.38709927,
+          3.7e-07
+        ],
+        "e": [
+          0.20563593,
+          1.906e-05
+        ],
+        "i_deg": [
+          7.00497902,
+          -0.00594749
+        ],
+        "L_deg": [
+          252.2503235,
+          149472.67411175
+        ],
+        "varpi_deg": [
+          77.45779628,
+          0.16047689
+        ],
+        "Omega_deg": [
+          48.33076593,
+          -0.12534081
+        ]
+      },
+      "moons": [],
+      "pole": {
+        "ra_deg": 281.0103,
+        "ra_rate_per_century": -0.0328,
+        "dec_deg": 61.4155,
+        "dec_rate_per_century": -0.0049,
+        "pm_deg": 329.5988,
+        "pm_rate_per_day": 6.1385108
+      },
+      "known_moon_count": 0,
+      "known_moon_count_source": "JPL SSD satellite elements table, fetched 2026-09-07",
+      "texture": "assets/textures/mercury.jpg"
+    },
+    {
+      "id": "venus",
+      "name": "Venus",
+      "radius_km": 6051.8,
+      "mass_kg": 4.867309999999999e+24,
+      "rotation_period_hr": 5832.432,
+      "retrograde_rotation": true,
+      "albedo": 0.65,
+      "elements": {
+        "a_au": [
+          0.72333566,
+          3.9e-06
+        ],
+        "e": [
+          0.00677672,
+          -4.107e-05
+        ],
+        "i_deg": [
+          3.39467605,
+          -0.0007889
+        ],
+        "L_deg": [
+          181.9790995,
+          58517.81538729
+        ],
+        "varpi_deg": [
+          131.60246718,
+          0.00268329
+        ],
+        "Omega_deg": [
+          76.67984255,
+          -0.27769418
+        ]
+      },
+      "moons": [],
+      "pole": {
+        "ra_deg": 272.76,
+        "ra_rate_per_century": 0.0,
+        "dec_deg": 67.16,
+        "dec_rate_per_century": 0.0,
+        "pm_deg": 160.2,
+        "pm_rate_per_day": -1.4813688
+      },
+      "known_moon_count": 0,
+      "known_moon_count_source": "JPL SSD satellite elements table, fetched 2026-09-07",
+      "texture": "assets/textures/venus.jpg"
+    },
+    {
+      "id": "earth",
+      "name": "Earth",
+      "radius_km": 6371.0084,
+      "mass_kg": 5.97217e+24,
+      "rotation_period_hr": 23.93447232,
+      "retrograde_rotation": false,
+      "albedo": 0.367,
+      "elements": {
+        "a_au": [
+          1.00000261,
+          5.62e-06
+        ],
+        "e": [
+          0.01671123,
+          -4.392e-05
+        ],
+        "i_deg": [
+          -1.531e-05,
+          -0.01294668
+        ],
+        "L_deg": [
+          100.46457166,
+          35999.37244981
+        ],
+        "varpi_deg": [
+          102.93768193,
+          0.32327364
+        ],
+        "Omega_deg": [
+          0.0,
+          0.0
+        ]
+      },
+      "moons": [
+        {
+          "id": "moon",
+          "name": "Moon",
+          "radius_km": 1737.4,
+          "mass_kg": 7.346119268804316e+22,
+          "gm_km3s2": 4902.8,
+          "elements_relative_to_parent": {
+            "frame": "ecliptic",
+            "a_km": 384400.0,
+            "e": 0.0554,
+            "arg_peri_deg": 318.15,
+            "mean_anomaly_deg_at_epoch": 135.27,
+            "i_deg": 5.16,
+            "raan_deg": 125.08,
+            "period_days": 27.322,
+            "peri_precession_period_days": 2190.40425,
+            "node_precession_period_days": 6793.650000000001
+          },
+          "texture": "assets/textures/moon.jpg"
+        }
+      ],
+      "pole": {
+        "ra_deg": 0.0,
+        "ra_rate_per_century": -0.641,
+        "dec_deg": 90.0,
+        "dec_rate_per_century": -0.557,
+        "pm_deg": 190.147,
+        "pm_rate_per_day": 360.9856235
+      },
+      "known_moon_count": 1,
+      "known_moon_count_source": "JPL SSD satellite elements table, fetched 2026-09-07",
+      "texture": "assets/textures/earth_day.jpg",
+      "night_texture": "assets/textures/earth_night.jpg",
+      "clouds_texture": "assets/textures/earth_clouds.jpg"
+    },
+    {
+      "id": "mars",
+      "name": "Mars",
+      "radius_km": 3389.5,
+      "mass_kg": 6.41691e+23,
+      "rotation_period_hr": 24.62296224,
+      "retrograde_rotation": false,
+      "albedo": 0.15,
+      "elements": {
+        "a_au": [
+          1.52371034,
+          1.847e-05
+        ],
+        "e": [
+          0.0933941,
+          7.882e-05
+        ],
+        "i_deg": [
+          1.84969142,
+          -0.00813131
+        ],
+        "L_deg": [
+          -4.55343205,
+          19140.30268499
+        ],
+        "varpi_deg": [
+          -23.94362959,
+          0.44441088
+        ],
+        "Omega_deg": [
+          49.55953891,
+          -0.29257343
+        ]
+      },
+      "moons": [
+        {
+          "id": "phobos",
+          "name": "Phobos",
+          "radius_km": 11.08,
+          "mass_kg": 1.0618819298771352e+16,
+          "gm_km3s2": 0.0007087,
+          "elements_relative_to_parent": {
+            "frame": "laplace",
+            "a_km": 9375.0,
+            "e": 0.015,
+            "arg_peri_deg": 216.3,
+            "mean_anomaly_deg_at_epoch": 189.7,
+            "i_deg": 1.1,
+            "raan_deg": 169.2,
+            "period_days": 0.3187,
+            "peri_precession_period_days": 401.77500000000003,
+            "node_precession_period_days": 840.0749999999999
+          }
+        },
+        {
+          "id": "deimos",
+          "name": "Deimos",
+          "radius_km": 6.2,
+          "mass_kg": 1441414444111477.5,
+          "gm_km3s2": 9.62e-05,
+          "elements_relative_to_parent": {
+            "frame": "laplace",
+            "a_km": 23457.0,
+            "e": 0.0,
+            "arg_peri_deg": 0.0,
+            "mean_anomaly_deg_at_epoch": 205.0,
+            "i_deg": 1.8,
+            "raan_deg": 54.3,
+            "period_days": 1.2625,
+            "peri_precession_period_days": null,
+            "node_precession_period_days": 20527.05
+          }
+        }
+      ],
+      "pole": {
+        "ra_deg": 317.269202,
+        "ra_rate_per_century": -0.10927547,
+        "dec_deg": 54.432516,
+        "dec_rate_per_century": -0.05827105,
+        "pm_deg": 176.049863,
+        "pm_rate_per_day": 350.891982443297
+      },
+      "known_moon_count": 2,
+      "known_moon_count_source": "JPL SSD satellite elements table, fetched 2026-09-07",
+      "texture": "assets/textures/mars.jpg"
+    },
+    {
+      "id": "jupiter",
+      "name": "Jupiter",
+      "radius_km": 69911.0,
+      "mass_kg": 1.898125e+27,
+      "rotation_period_hr": 9.92496,
+      "retrograde_rotation": false,
+      "albedo": 0.52,
+      "elements": {
+        "a_au": [
+          5.202887,
+          -0.00011607
+        ],
+        "e": [
+          0.04838624,
+          -0.00013253
+        ],
+        "i_deg": [
+          1.30439695,
+          -0.00183714
+        ],
+        "L_deg": [
+          34.39644051,
+          3034.74612775
+        ],
+        "varpi_deg": [
+          14.72847983,
+          0.21252668
+        ],
+        "Omega_deg": [
+          100.47390909,
+          0.20469106
+        ]
+      },
+      "moons": [
+        {
+          "id": "io",
+          "name": "Io",
+          "radius_km": 1821.49,
+          "mass_kg": 8.930050149835183e+22,
+          "gm_km3s2": 5959.91547,
+          "elements_relative_to_parent": {
+            "frame": "laplace",
+            "a_km": 421800.0,
+            "e": 0.004,
+            "arg_peri_deg": 49.1,
+            "mean_anomaly_deg_at_epoch": 330.9,
+            "i_deg": 0.0,
+            "raan_deg": 0.0,
+            "period_days": 1.762732,
+            "peri_precession_period_days": 486.87825,
+            "node_precession_period_days": null
+          }
+        },
+        {
+          "id": "europa",
+          "name": "Europa",
+          "radius_km": 1560.8,
+          "mass_kg": 4.798789481570273e+22,
+          "gm_km3s2": 3202.7121,
+          "elements_relative_to_parent": {
+            "frame": "laplace",
+            "a_km": 671100.0,
+            "e": 0.009,
+            "arg_peri_deg": 45.0,
+            "mean_anomaly_deg_at_epoch": 345.4,
+            "i_deg": 0.5,
+            "raan_deg": 184.0,
+            "period_days": 3.525463,
+            "peri_precession_period_days": 509.15849999999995,
+            "node_precession_period_days": 11031.2805
+          }
+        },
+        {
+          "id": "ganymede",
+          "name": "Ganymede",
+          "radius_km": 2631.2,
+          "mass_kg": 1.4815452127659577e+23,
+          "gm_km3s2": 9887.83275,
+          "elements_relative_to_parent": {
+            "frame": "laplace",
+            "a_km": 1070400.0,
+            "e": 0.001,
+            "arg_peri_deg": 198.3,
+            "mean_anomaly_deg_at_epoch": 324.8,
+            "i_deg": 0.2,
+            "raan_deg": 58.5,
+            "period_days": 7.155588,
+            "peri_precession_period_days": 24946.94025,
+            "node_precession_period_days": 50335.833000000006
+          }
+        },
+        {
+          "id": "callisto",
+          "name": "Callisto",
+          "radius_km": 2410.3,
+          "mass_kg": 1.0757092298471683e+23,
+          "gm_km3s2": 7179.2834,
+          "elements_relative_to_parent": {
+            "frame": "laplace",
+            "a_km": 1882700.0,
+            "e": 0.007,
+            "arg_peri_deg": 43.8,
+            "mean_anomaly_deg_at_epoch": 87.4,
+            "i_deg": 0.3,
+            "raan_deg": 309.1,
+            "period_days": 16.69044,
+            "peri_precession_period_days": 101510.64525,
+            "node_precession_period_days": 210845.676
+          }
+        },
+        {
+          "id": "amalthea",
+          "name": "Amalthea",
+          "radius_km": 83.5,
+          "mass_kg": 2.46568774348217e+18,
+          "gm_km3s2": 0.16456,
+          "elements_relative_to_parent": {
+            "frame": "laplace",
+            "a_km": 181400.0,
+            "e": 0.003,
+            "arg_peri_deg": 180.1,
+            "mean_anomaly_deg_at_epoch": 310.6,
+            "i_deg": 0.4,
+            "raan_deg": 282.9,
+            "period_days": 0.499918,
+            "peri_precession_period_days": 71.589,
+            "node_precession_period_days": 143.54325
+          }
+        },
+        {
+          "id": "thebe",
+          "name": "Thebe",
+          "radius_km": 49.3,
+          "mass_kg": 4.517530716212167e+17,
+          "gm_km3s2": 0.03015,
+          "elements_relative_to_parent": {
+            "frame": "laplace",
+            "a_km": 221900.0,
+            "e": 0.018,
+            "arg_peri_deg": 26.6,
+            "mean_anomaly_deg_at_epoch": 182.1,
+            "i_deg": 1.1,
+            "raan_deg": 340.4,
+            "period_days": 0.676105,
+            "peri_precession_period_days": 145.36950000000002,
+            "node_precession_period_days": 291.10425000000004
+          }
+        },
+        {
+          "id": "adrastea",
+          "name": "Adrastea",
+          "radius_km": 8.2,
+          "mass_kg": 2097692538207971.5,
+          "gm_km3s2": 0.00014,
+          "elements_relative_to_parent": {
+            "frame": "laplace",
+            "a_km": 129000.0,
+            "e": 0.0,
+            "arg_peri_deg": 0.0,
+            "mean_anomaly_deg_at_epoch": 214.5,
+            "i_deg": 0.0,
+            "raan_deg": 0.0,
+            "period_days": 0.29826,
+            "peri_precession_period_days": null,
+            "node_precession_period_days": null
+          }
+        },
+        {
+          "id": "metis",
+          "name": "Metis",
+          "radius_km": 21.5,
+          "mass_kg": 3.7458795325142344e+16,
+          "gm_km3s2": 0.0025,
+          "elements_relative_to_parent": {
+            "frame": "laplace",
+            "a_km": 128000.0,
+            "e": 0.0,
+            "arg_peri_deg": 0.0,
+            "mean_anomaly_deg_at_epoch": 166.0,
+            "i_deg": 0.0,
+            "raan_deg": 0.0,
+            "period_days": 0.294779,
+            "peri_precession_period_days": null,
+            "node_precession_period_days": null
+          }
+        },
+        {
+          "id": "himalia",
+          "name": "Himalia",
+          "radius_km": 85.0,
+          "mass_kg": 2.2707521726101292e+18,
+          "gm_km3s2": 0.15155,
+          "elements_relative_to_parent": {
+            "frame": "ecliptic",
+            "a_km": 11439000.0,
+            "e": 0.16,
+            "arg_peri_deg": 321.1,
+            "mean_anomaly_deg_at_epoch": 78.3,
+            "i_deg": 28.4,
+            "raan_deg": 64.2,
+            "period_days": 249.909,
+            "peri_precession_period_days": 68447.85,
+            "node_precession_period_days": 108515.77500000001
+          }
+        }
+      ],
+      "pole": {
+        "ra_deg": 268.056595,
+        "ra_rate_per_century": -0.006499,
+        "dec_deg": 64.495303,
+        "dec_rate_per_century": 0.002413,
+        "pm_deg": 284.95,
+        "pm_rate_per_day": 870.536
+      },
+      "known_moon_count": 115,
+      "known_moon_count_source": "JPL SSD satellite elements table, fetched 2026-09-07",
+      "texture": "assets/textures/jupiter.jpg"
+    },
+    {
+      "id": "saturn",
+      "name": "Saturn",
+      "radius_km": 58232.0,
+      "mass_kg": 5.68317e+26,
+      "rotation_period_hr": 10.65624,
+      "retrograde_rotation": false,
+      "albedo": 0.47,
+      "elements": {
+        "a_au": [
+          9.53667594,
+          -0.0012506
+        ],
+        "e": [
+          0.05386179,
+          -0.00050991
+        ],
+        "i_deg": [
+          2.48599187,
+          0.00193609
+        ],
+        "L_deg": [
+          49.95424423,
+          1222.49362201
+        ],
+        "varpi_deg": [
+          92.59887831,
+          -0.41897216
+        ],
+        "Omega_deg": [
+          113.66242448,
+          -0.28867794
+        ]
+      },
+      "moons": [
+        {
+          "id": "mimas",
+          "name": "Mimas",
+          "radius_km": 198.2,
+          "mass_kg": 3.751108780341625e+19,
+          "gm_km3s2": 2.50349,
+          "elements_relative_to_parent": {
+            "frame": "laplace",
+            "a_km": 186000.0,
+            "e": 0.02,
+            "arg_peri_deg": 160.4,
+            "mean_anomaly_deg_at_epoch": 275.3,
+            "i_deg": 1.6,
+            "raan_deg": 66.2,
+            "period_days": 0.942422,
+            "peri_precession_period_days": 180.06825,
+            "node_precession_period_days": 360.1365
+          }
+        },
+        {
+          "id": "enceladus",
+          "name": "Enceladus",
+          "radius_km": 252.1,
+          "mass_kg": 1.0803670961941864e+20,
+          "gm_km3s2": 7.21037,
+          "elements_relative_to_parent": {
+            "frame": "laplace",
+            "a_km": 238400.0,
+            "e": 0.005,
+            "arg_peri_deg": 119.5,
+            "mean_anomaly_deg_at_epoch": 57.0,
+            "i_deg": 0.0,
+            "raan_deg": 0.0,
+            "period_days": 1.370218,
+            "peri_precession_period_days": 1065.069,
+            "node_precession_period_days": null
+          }
+        },
+        {
+          "id": "tethys",
+          "name": "Tethys",
+          "radius_km": 531.1,
+          "mass_kg": 6.175236739586455e+20,
+          "gm_km3s2": 41.21353,
+          "elements_relative_to_parent": {
+            "frame": "laplace",
+            "a_km": 295000.0,
+            "e": 0.001,
+            "arg_peri_deg": 335.3,
+            "mean_anomaly_deg_at_epoch": 0.0,
+            "i_deg": 1.1,
+            "raan_deg": 273.0,
+            "period_days": 1.887802,
+            "peri_precession_period_days": 1.82625,
+            "node_precession_period_days": 1819.6755
+          }
+        },
+        {
+          "id": "dione",
+          "name": "Dione",
+          "radius_km": 561.4,
+          "mass_kg": 1.0955359604435123e+21,
+          "gm_km3s2": 73.11607,
+          "elements_relative_to_parent": {
+            "frame": "laplace",
+            "a_km": 377700.0,
+            "e": 0.002,
+            "arg_peri_deg": 116.0,
+            "mean_anomaly_deg_at_epoch": 212.0,
+            "i_deg": 0.0,
+            "raan_deg": 0.0,
+            "period_days": 2.736916,
+            "peri_precession_period_days": 4272.6945000000005,
+            "node_precession_period_days": null
+          }
+        },
+        {
+          "id": "rhea",
+          "name": "Rhea",
+          "radius_km": 763.5,
+          "mass_kg": 2.3065890020976928e+21,
+          "gm_km3s2": 153.94175,
+          "elements_relative_to_parent": {
+            "frame": "laplace",
+            "a_km": 527200.0,
+            "e": 0.001,
+            "arg_peri_deg": 44.3,
+            "mean_anomaly_deg_at_epoch": 31.5,
+            "i_deg": 0.3,
+            "raan_deg": 133.7,
+            "period_days": 4.517503,
+            "peri_precession_period_days": 12396.21975,
+            "node_precession_period_days": 13066.81875
+          }
+        },
+        {
+          "id": "titan",
+          "name": "Titan",
+          "radius_km": 2574.76,
+          "mass_kg": 1.3452408001198683e+23,
+          "gm_km3s2": 8978.1371,
+          "elements_relative_to_parent": {
+            "frame": "laplace",
+            "a_km": 1221900.0,
+            "e": 0.029,
+            "arg_peri_deg": 78.3,
+            "mean_anomaly_deg_at_epoch": 11.7,
+            "i_deg": 0.3,
+            "raan_deg": 78.6,
+            "period_days": 15.945448,
+            "peri_precession_period_days": 126624.87,
+            "node_precession_period_days": 251061.8925
+          }
+        },
+        {
+          "id": "hyperion",
+          "name": "Hyperion",
+          "radius_km": 135.0,
+          "mass_kg": 5.551243632004795e+18,
+          "gm_km3s2": 0.37049,
+          "elements_relative_to_parent": {
+            "frame": "laplace",
+            "a_km": 1481500.0,
+            "e": 0.105,
+            "arg_peri_deg": 214.0,
+            "mean_anomaly_deg_at_epoch": 122.9,
+            "i_deg": 0.6,
+            "raan_deg": 87.1,
+            "period_days": 21.276658,
+            "peri_precession_period_days": 7612.90575,
+            "node_precession_period_days": 94097.53125
+          }
+        },
+        {
+          "id": "iapetus",
+          "name": "Iapetus",
+          "radius_km": 734.3,
+          "mass_kg": 1.8057403356308062e+21,
+          "gm_km3s2": 120.51511,
+          "elements_relative_to_parent": {
+            "frame": "laplace",
+            "a_km": 3561700.0,
+            "e": 0.028,
+            "arg_peri_deg": 254.5,
+            "mean_anomaly_deg_at_epoch": 74.8,
+            "i_deg": 7.6,
+            "raan_deg": 86.5,
+            "period_days": 79.331002,
+            "peri_precession_period_days": 607374.225,
+            "node_precession_period_days": 1143342.8055
+          }
+        },
+        {
+          "id": "phoebe",
+          "name": "Phoebe",
+          "radius_km": 106.5,
+          "mass_kg": 8.312706023374289e+18,
+          "gm_km3s2": 0.55479,
+          "elements_relative_to_parent": {
+            "frame": "laplace",
+            "a_km": 12929400.0,
+            "e": 0.164,
+            "arg_peri_deg": 240.3,
+            "mean_anomaly_deg_at_epoch": 308.0,
+            "i_deg": 175.2,
+            "raan_deg": 192.7,
+            "period_days": 550.30391,
+            "peri_precession_period_days": 171054.24525,
+            "node_precession_period_days": 270826.66575
+          }
+        },
+        {
+          "id": "helene",
+          "name": "Helene",
+          "radius_km": 18.0,
+          "mass_kg": 7192088702427331.0,
+          "gm_km3s2": 0.00048,
+          "elements_relative_to_parent": {
+            "frame": "laplace",
+            "a_km": 377600.0,
+            "e": 0.007,
+            "arg_peri_deg": 194.3,
+            "mean_anomaly_deg_at_epoch": -64.5,
+            "i_deg": 0.2,
+            "raan_deg": 260.8,
+            "period_days": 2.736916,
+            "peri_precession_period_days": 2127.58125,
+            "node_precession_period_days": 4275.98175
+          }
+        },
+        {
+          "id": "janus",
+          "name": "Janus",
+          "radius_km": 89.2,
+          "mass_kg": 1.8972130656278098e+18,
+          "gm_km3s2": 0.12662,
+          "elements_relative_to_parent": {
+            "frame": "laplace",
+            "a_km": 151500.0,
+            "e": 0.007,
+            "arg_peri_deg": 11.1,
+            "mean_anomaly_deg_at_epoch": 111.7,
+            "i_deg": 0.2,
+            "raan_deg": 159.9,
+            "period_days": 0.697353,
+            "peri_precession_period_days": 87.66,
+            "node_precession_period_days": 176.0505
+          }
+        },
+        {
+          "id": "epimetheus",
+          "name": "Epimetheus",
+          "radius_km": 58.2,
+          "mass_kg": 5.265208270902008e+17,
+          "gm_km3s2": 0.03514,
+          "elements_relative_to_parent": {
+            "frame": "laplace",
+            "a_km": 151400.0,
+            "e": 0.02,
+            "arg_peri_deg": 96.3,
+            "mean_anomaly_deg_at_epoch": 197.2,
+            "i_deg": 0.3,
+            "raan_deg": 189.8,
+            "period_days": 0.697012,
+            "peri_precession_period_days": 87.66,
+            "node_precession_period_days": 176.0505
+          }
+        },
+        {
+          "id": "atlas",
+          "name": "Atlas",
+          "radius_km": 15.1,
+          "mass_kg": 5543901708121067.0,
+          "gm_km3s2": 0.00037,
+          "elements_relative_to_parent": {
+            "frame": "laplace",
+            "a_km": 137700.0,
+            "e": 0.001,
+            "arg_peri_deg": 82.3,
+            "mean_anomaly_deg_at_epoch": 289.1,
+            "i_deg": 0.0,
+            "raan_deg": 0.0,
+            "period_days": 0.604602,
+            "peri_precession_period_days": 124.91550000000001,
+            "node_precession_period_days": null
+          }
+        },
+        {
+          "id": "prometheus",
+          "name": "Prometheus",
+          "radius_km": 43.1,
+          "mass_kg": 1.6047347917290982e+17,
+          "gm_km3s2": 0.01071,
+          "elements_relative_to_parent": {
+            "frame": "laplace",
+            "a_km": 139400.0,
+            "e": 0.002,
+            "arg_peri_deg": 341.9,
+            "mean_anomaly_deg_at_epoch": 135.4,
+            "i_deg": 0.0,
+            "raan_deg": 0.0,
+            "period_days": 0.615878,
+            "peri_precession_period_days": 130.39425,
+            "node_precession_period_days": null
+          }
+        },
+        {
+          "id": "pandora",
+          "name": "Pandora",
+          "radius_km": 40.6,
+          "mass_kg": 1.3874737788432725e+17,
+          "gm_km3s2": 0.00926,
+          "elements_relative_to_parent": {
+            "frame": "laplace",
+            "a_km": 141700.0,
+            "e": 0.004,
+            "arg_peri_deg": 217.9,
+            "mean_anomaly_deg_at_epoch": 123.9,
+            "i_deg": 0.0,
+            "raan_deg": 0.0,
+            "period_days": 0.631369,
+            "peri_precession_period_days": 138.42975,
+            "node_precession_period_days": null
+          }
+        },
+        {
+          "id": "pan",
+          "name": "Pan",
+          "radius_km": 14.0,
+          "mass_kg": 4195385076415943.0,
+          "gm_km3s2": 0.00028,
+          "elements_relative_to_parent": {
+            "frame": "laplace",
+            "a_km": 133600.0,
+            "e": 0.0,
+            "arg_peri_deg": 0.0,
+            "mean_anomaly_deg_at_epoch": 146.6,
+            "i_deg": 0.0,
+            "raan_deg": 0.0,
+            "period_days": 0.575051,
+            "peri_precession_period_days": null,
+            "node_precession_period_days": null
+          }
+        }
+      ],
+      "pole": {
+        "ra_deg": 40.589,
+        "ra_rate_per_century": -0.036,
+        "dec_deg": 83.537,
+        "dec_rate_per_century": -0.004,
+        "pm_deg": 38.9,
+        "pm_rate_per_day": 810.7939024
+      },
+      "known_moon_count": 291,
+      "known_moon_count_source": "JPL SSD satellite elements table, fetched 2026-09-07",
+      "rings": {
+        "inner_km": 66900,
+        "outer_km": 140612,
+        "bands": [
+          {
+            "name": "D Ring",
+            "inner_km": 66900,
+            "outer_km": 74491
+          },
+          {
+            "name": "C Ring",
+            "inner_km": 74491,
+            "outer_km": 91975
+          },
+          {
+            "name": "B Ring",
+            "inner_km": 91975,
+            "outer_km": 117570
+          },
+          {
+            "name": "Cassini Division",
+            "inner_km": 117500,
+            "outer_km": 122050
+          },
+          {
+            "name": "A Ring",
+            "inner_km": 122050,
+            "outer_km": 136770
+          },
+          {
+            "name": "F Ring",
+            "inner_km": 139826,
+            "outer_km": 140612
+          }
+        ],
+        "source": "PDS Ring-Moon Systems Node, Vital Statistics for Saturn Rings, fetched 2026-09-07",
+        "texture": "assets/textures/saturn_ring_alpha.png"
+      },
+      "texture": "assets/textures/saturn.jpg"
+    },
+    {
+      "id": "uranus",
+      "name": "Uranus",
+      "radius_km": 25362.0,
+      "mass_kg": 8.68099e+25,
+      "rotation_period_hr": 17.23992,
+      "retrograde_rotation": true,
+      "albedo": 0.51,
+      "elements": {
+        "a_au": [
+          19.18916464,
+          -0.00196176
+        ],
+        "e": [
+          0.04725744,
+          -4.397e-05
+        ],
+        "i_deg": [
+          0.77263783,
+          -0.00242939
+        ],
+        "L_deg": [
+          313.23810451,
+          428.48202785
+        ],
+        "varpi_deg": [
+          170.9542763,
+          0.40805281
+        ],
+        "Omega_deg": [
+          74.01692503,
+          0.04240589
+        ]
+      },
+      "moons": [
+        {
+          "id": "ariel",
+          "name": "Ariel",
+          "radius_km": 578.9,
+          "mass_kg": 1.2511237638597543e+21,
+          "gm_km3s2": 83.5,
+          "elements_relative_to_parent": {
+            "frame": "equatorial",
+            "a_km": 190929.0,
+            "e": 0.001,
+            "arg_peri_deg": 9.6,
+            "mean_anomaly_deg_at_epoch": 193.5,
+            "i_deg": 0.0,
+            "raan_deg": 0.0,
+            "period_days": 2.520379,
+            "peri_precession_period_days": 10556.09025,
+            "node_precession_period_days": null
+          }
+        },
+        {
+          "id": "umbriel",
+          "name": "Umbriel",
+          "radius_km": 584.7,
+          "mass_kg": 1.2750973928678456e+21,
+          "gm_km3s2": 85.1,
+          "elements_relative_to_parent": {
+            "frame": "equatorial",
+            "a_km": 265986.0,
+            "e": 0.004,
+            "arg_peri_deg": 183.4,
+            "mean_anomaly_deg_at_epoch": 253.0,
+            "i_deg": 0.1,
+            "raan_deg": 174.8,
+            "period_days": 4.144177,
+            "peri_precession_period_days": 23422.021500000003,
+            "node_precession_period_days": 47389.36125
+          }
+        },
+        {
+          "id": "titania",
+          "name": "Titania",
+          "radius_km": 788.9,
+          "mass_kg": 3.3997602637099193e+21,
+          "gm_km3s2": 226.9,
+          "elements_relative_to_parent": {
+            "frame": "equatorial",
+            "a_km": 436298.0,
+            "e": 0.002,
+            "arg_peri_deg": 184.0,
+            "mean_anomaly_deg_at_epoch": 68.1,
+            "i_deg": 0.1,
+            "raan_deg": 29.5,
+            "period_days": 8.705869,
+            "peri_precession_period_days": 211818.702,
+            "node_precession_period_days": 600708.04725
+          }
+        },
+        {
+          "id": "oberon",
+          "name": "Oberon",
+          "radius_km": 761.4,
+          "mass_kg": 3.0761162721006893e+21,
+          "gm_km3s2": 205.3,
+          "elements_relative_to_parent": {
+            "frame": "equatorial",
+            "a_km": 583511.0,
+            "e": 0.002,
+            "arg_peri_deg": 132.2,
+            "mean_anomaly_deg_at_epoch": 143.6,
+            "i_deg": 0.1,
+            "raan_deg": 76.8,
+            "period_days": 13.463237,
+            "peri_precession_period_days": 57930.111000000004,
+            "node_precession_period_days": 70419.4695
+          }
+        },
+        {
+          "id": "miranda",
+          "name": "Miranda",
+          "radius_km": 235.8,
+          "mass_kg": 6.442912795924483e+19,
+          "gm_km3s2": 4.3,
+          "elements_relative_to_parent": {
+            "frame": "equatorial",
+            "a_km": 129846.0,
+            "e": 0.001,
+            "arg_peri_deg": 154.8,
+            "mean_anomaly_deg_at_epoch": 73.0,
+            "i_deg": 4.4,
+            "raan_deg": 100.9,
+            "period_days": 1.413479,
+            "peri_precession_period_days": 3264.96975,
+            "node_precession_period_days": 6496.701749999999
+          }
+        }
+      ],
+      "pole": {
+        "ra_deg": 257.311,
+        "ra_rate_per_century": 0.0,
+        "dec_deg": -15.175,
+        "dec_rate_per_century": 0.0,
+        "pm_deg": 203.81,
+        "pm_rate_per_day": -501.1600928
+      },
+      "known_moon_count": 29,
+      "known_moon_count_source": "JPL SSD satellite elements table, fetched 2026-09-07",
+      "texture": "assets/textures/uranus.jpg"
+    },
+    {
+      "id": "neptune",
+      "name": "Neptune",
+      "radius_km": 24622.0,
+      "mass_kg": 1.024092e+26,
+      "rotation_period_hr": 16.11,
+      "retrograde_rotation": false,
+      "albedo": 0.41,
+      "elements": {
+        "a_au": [
+          30.06992276,
+          0.00026291
+        ],
+        "e": [
+          0.00859048,
+          5.105e-05
+        ],
+        "i_deg": [
+          1.77004347,
+          0.00035372
+        ],
+        "L_deg": [
+          -55.12002969,
+          218.45945325
+        ],
+        "varpi_deg": [
+          44.96476227,
+          -0.32241464
+        ],
+        "Omega_deg": [
+          131.78422574,
+          -0.00508664
+        ]
+      },
+      "moons": [
+        {
+          "id": "triton",
+          "name": "Triton",
+          "radius_km": 1352.6,
+          "mass_kg": 2.1403887623614025e+22,
+          "gm_km3s2": 1428.49546,
+          "elements_relative_to_parent": {
+            "frame": "laplace",
+            "a_km": 354800.0,
+            "e": 0.0,
+            "arg_peri_deg": 0.0,
+            "mean_anomaly_deg_at_epoch": 63.0,
+            "i_deg": 157.3,
+            "raan_deg": 178.1,
+            "period_days": 5.876994,
+            "peri_precession_period_days": null,
+            "node_precession_period_days": 124323.42975000001
+          }
+        },
+        {
+          "id": "naiad",
+          "name": "Naiad",
+          "radius_km": 29.0,
+          "mass_kg": 1.2780940964938568e+17,
+          "gm_km3s2": 0.00853,
+          "elements_relative_to_parent": {
+            "frame": "laplace",
+            "a_km": 48200.0,
+            "e": 0.0,
+            "arg_peri_deg": 0.0,
+            "mean_anomaly_deg_at_epoch": 89.7,
+            "i_deg": 4.7,
+            "raan_deg": 41.4,
+            "period_days": 0.29398,
+            "peri_precession_period_days": null,
+            "node_precession_period_days": 210.01874999999998
+          }
+        },
+        {
+          "id": "thalassa",
+          "name": "Thalassa",
+          "radius_km": 40.0,
+          "mass_kg": 3.534611926880432e+17,
+          "gm_km3s2": 0.02359,
+          "elements_relative_to_parent": {
+            "frame": "laplace",
+            "a_km": 50100.0,
+            "e": 0.0,
+            "arg_peri_deg": 0.0,
+            "mean_anomaly_deg_at_epoch": 165.7,
+            "i_deg": 0.2,
+            "raan_deg": 130.6,
+            "period_days": 0.311078,
+            "peri_precession_period_days": null,
+            "node_precession_period_days": 238.8735
+          }
+        },
+        {
+          "id": "despina",
+          "name": "Despina",
+          "radius_km": 74.0,
+          "mass_kg": 1.7490260713215465e+18,
+          "gm_km3s2": 0.11673,
+          "elements_relative_to_parent": {
+            "frame": "laplace",
+            "a_km": 52500.0,
+            "e": 0.0,
+            "arg_peri_deg": 0.0,
+            "mean_anomaly_deg_at_epoch": 125.1,
+            "i_deg": 0.0,
+            "raan_deg": 0.0,
+            "period_days": 0.334656,
+            "peri_precession_period_days": null,
+            "node_precession_period_days": null
+          }
+        },
+        {
+          "id": "galatea",
+          "name": "Galatea",
+          "radius_km": 79.0,
+          "mass_kg": 2.8453700928978125e+18,
+          "gm_km3s2": 0.1899,
+          "elements_relative_to_parent": {
+            "frame": "laplace",
+            "a_km": 62000.0,
+            "e": 0.0,
+            "arg_peri_deg": 0.0,
+            "mean_anomaly_deg_at_epoch": 86.7,
+            "i_deg": 0.0,
+            "raan_deg": 0.0,
+            "period_days": 0.428744,
+            "peri_precession_period_days": null,
+            "node_precession_period_days": null
+          }
+        },
+        {
+          "id": "larissa",
+          "name": "Larissa",
+          "radius_km": 96.0,
+          "mass_kg": 3.81839976026371e+18,
+          "gm_km3s2": 0.25484,
+          "elements_relative_to_parent": {
+            "frame": "laplace",
+            "a_km": 73500.0,
+            "e": 0.001,
+            "arg_peri_deg": 247.3,
+            "mean_anomaly_deg_at_epoch": 165.5,
+            "i_deg": 0.2,
+            "raan_deg": 312.0,
+            "period_days": 0.554989,
+            "peri_precession_period_days": 459.11924999999997,
+            "node_precession_period_days": 918.2384999999999
+          }
+        },
+        {
+          "id": "proteus",
+          "name": "Proteus",
+          "radius_km": 208.0,
+          "mass_kg": 3.87087204075517e+19,
+          "gm_km3s2": 2.58342,
+          "elements_relative_to_parent": {
+            "frame": "laplace",
+            "a_km": 117600.0,
+            "e": 0.0,
+            "arg_peri_deg": 0.0,
+            "mean_anomaly_deg_at_epoch": 276.8,
+            "i_deg": 0.0,
+            "raan_deg": 0.0,
+            "period_days": 1.122315,
+            "peri_precession_period_days": null,
+            "node_precession_period_days": null
+          }
+        },
+        {
+          "id": "nereid",
+          "name": "Nereid",
+          "radius_km": 170.0,
+          "mass_kg": 0.0,
+          "gm_km3s2": 0.0,
+          "elements_relative_to_parent": {
+            "frame": "ecliptic",
+            "a_km": 5513900.0,
+            "e": 0.751,
+            "arg_peri_deg": 296.8,
+            "mean_anomaly_deg_at_epoch": 318.5,
+            "i_deg": 5.1,
+            "raan_deg": 319.5,
+            "period_days": 360.133039,
+            "peri_precession_period_days": 2918505.65325,
+            "node_precession_period_days": 3442968.4935000003
+          }
+        }
+      ],
+      "pole": {
+        "ra_deg": 299.36,
+        "ra_rate_per_century": 0.0,
+        "dec_deg": 43.46,
+        "dec_rate_per_century": 0.0,
+        "pm_deg": 249.978,
+        "pm_rate_per_day": 541.1397757
+      },
+      "known_moon_count": 16,
+      "known_moon_count_source": "JPL SSD satellite elements table, fetched 2026-09-07",
+      "texture": "assets/textures/neptune.jpg"
+    }
+  ],
+  "dwarf_planets": [],
+  "small_bodies": {
+    "asteroids": [],
+    "tnos": []
+  },
+  "stars": []
+}
