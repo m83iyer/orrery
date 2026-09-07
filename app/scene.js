@@ -1,4 +1,4 @@
-import { planetPositionAU, osculatingPositionAU, moonPositionKm, julianCenturiesSinceJ2000, daysSinceEpoch, dateToJD, AU_KM, eclipticPoleAndNode, wrapDeg, DEG2RAD } from "./orbits.js";
+import { planetPositionAU, osculatingPositionAU, moonPositionKm, julianCenturiesSinceJ2000, daysSinceEpoch, dateToJD, AU_KM, eclipticPoleAndNode, wrapDeg, DEG2RAD } from "./orbits.js?v=2";
 
 const THREE = window.THREE;
 if (!THREE) {
