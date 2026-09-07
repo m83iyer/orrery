@@ -113,6 +113,12 @@ class Body {
     this.labelEl = document.createElement("div");
     this.labelEl.className = "body-label" + (kind === "moon" || kind === "dwarf" ? " dim" : "");
     this.labelEl.textContent = this.name;
+    // Sub-pixel bodies fall back to a marker dot (see LABEL_HIDE_PX below) —
+    // give that dot a size derived from the body's REAL radius (sqrt-scaled
+    // so Jupiter and a small moon are both legible, not a uniform dot for
+    // every body regardless of actual size).
+    const markerPx = Math.max(3, Math.min(13, 3 + 10 * Math.sqrt(this.radiusKm) / Math.sqrt(75000)));
+    this.labelEl.style.setProperty("--marker-px", markerPx.toFixed(1) + "px");
     this.labelEl.addEventListener("click", (e) => {
       e.stopPropagation();
       selectBody(this);
@@ -304,7 +310,8 @@ function nearestSurfaceDistKm() {
 let selected = null;
 let flyTo = null; // {fromKm, toKm, fromYaw, toYaw, fromPitch, toPitch, t0, dur}
 
-function selectBody(body) {
+function selectBody(body, opts) {
+  const animate = !opts || opts.animate !== false;
   selected = body;
   document.querySelectorAll(".body-label.selected").forEach((el) => el.classList.remove("selected"));
   body.labelEl.classList.add("selected");
@@ -320,7 +327,14 @@ function selectBody(body) {
   const toKm = { x: target.x + offsetEcl.x, y: target.y + offsetEcl.y, z: target.z + offsetEcl.z };
   const lookDirWorld = eclipticDirToWorld({ x: -offsetEcl.x, y: -offsetEcl.y, z: -offsetEcl.z });
   const { yaw: toYaw, pitch: toPitch } = yawPitchFromWorldDir(lookDirWorld);
-  flyTo = { fromKm: { ...rig.posKm }, toKm, fromYaw: rig.yaw, toYaw, fromPitch: rig.pitch, toPitch, t0: performance.now(), dur: 2200 };
+  if (animate) {
+    flyTo = { fromKm: { ...rig.posKm }, toKm, fromYaw: rig.yaw, toYaw, fromPitch: rig.pitch, toPitch, t0: performance.now(), dur: 2200 };
+  } else {
+    flyTo = null;
+    rig.posKm = toKm;
+    rig.yaw = toYaw;
+    rig.pitch = toPitch;
+  }
   updateInfoPanel(body);
 }
 window.selectBody = selectBody;
@@ -344,16 +358,35 @@ addEventListener("pointermove", (e) => {
   rig.yaw -= dx * 0.0035;
   rig.pitch = Math.max(-1.5, Math.min(1.5, rig.pitch - dy * 0.0035));
 });
+// Google Earth-style zoom: always toward/away from a fixed target (the
+// selected body, or the Sun if nothing is selected) — never just "fly
+// forward along wherever the camera happens to be pointed". Distance-
+// proportional step size gives the same fast-far/precise-close feel;
+// re-aiming at the target each tick keeps it centered as you zoom, so
+// zoom and look never drift apart the way raw dolly-forward could.
 canvas.addEventListener("wheel", (e) => {
   e.preventDefault();
   flyTo = null;
-  const dist = nearestSurfaceDistKm();
-  const moveMag = Math.min(Math.max(dist, 1) * 0.2, MAX_DIST_KM);
+  const target = selected || bodiesById.get("sun");
+  const targetKm = target.absolutePositionKm(clock.jd);
+  const toTarget = { x: targetKm.x - rig.posKm.x, y: targetKm.y - rig.posKm.y, z: targetKm.z - rig.posKm.z };
+  const distToCenter = Math.hypot(toTarget.x, toTarget.y, toTarget.z) || 1;
+  const distToSurface = Math.max(distToCenter - target.radiusKm, target.radiusKm * 0.02);
+  const dirEcl = { x: toTarget.x / distToCenter, y: toTarget.y / distToCenter, z: toTarget.z / distToCenter };
+
+  const moveMag = Math.min(distToSurface * 0.2, MAX_DIST_KM);
   const move = (e.deltaY > 0 ? -1 : 1) * moveMag;
-  const fwdEcl = worldDirToEclipticKm(rigForwardVec());
-  rig.posKm.x += fwdEcl.x * move;
-  rig.posKm.y += fwdEcl.y * move;
-  rig.posKm.z += fwdEcl.z * move;
+  // Never cross into the target (would flip which side we're looking from).
+  const clamped = Math.min(move, distToSurface - target.radiusKm * 0.02);
+  rig.posKm.x += dirEcl.x * clamped;
+  rig.posKm.y += dirEcl.y * clamped;
+  rig.posKm.z += dirEcl.z * clamped;
+
+  const newToTarget = { x: targetKm.x - rig.posKm.x, y: targetKm.y - rig.posKm.y, z: targetKm.z - rig.posKm.z };
+  const lookWorld = eclipticDirToWorld(newToTarget);
+  const { yaw, pitch } = yawPitchFromWorldDir(lookWorld);
+  rig.yaw = yaw;
+  rig.pitch = pitch;
 }, { passive: false });
 
 // ---- labels & picking ----------------------------------------------------
@@ -503,6 +536,14 @@ async function boot() {
   if (!res.ok) throw new Error("data.json missing — run scripts/build_data.py first");
   const data = await res.json();
   buildUniverse(data);
+
+  // Opening shot: sunlit Earth, not a distant top-down debug view — the
+  // first thing anyone sees should be a real, detailed, correctly-scaled
+  // planet, not a field of dots. Also sets the initial zoom target (see
+  // the wheel handler) so scrolling on load zooms Earth, not the Sun.
+  const earth = bodiesById.get("earth");
+  if (earth) selectBody(earth, { animate: false });
+
   requestAnimationFrame(tick);
 }
 boot().catch((err) => {

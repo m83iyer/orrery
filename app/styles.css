@@ -55,7 +55,7 @@ html, body {
   content: "";
   position: absolute;
   left: 50%; top: -1px;
-  width: 5px; height: 5px;
+  width: var(--marker-px, 5px); height: var(--marker-px, 5px);
   border-radius: 50%;
   background: var(--accent);
   transform: translate(-50%, -50%);
