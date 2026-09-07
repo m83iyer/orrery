@@ -1,8 +1,17 @@
-// Orbital mechanics core. Mirrors DATA_SCHEMA.md's propagation formulas
-// exactly — this is the JS side of what scripts/oracle_positions.py
-// verifies against JPL Horizons in Python. Keep the two in lockstep; if
-// you change the math here, the oracle's Python reimplementation must
-// change identically or the oracle stops meaning anything.
+// Orbital mechanics core. Implements DATA_SCHEMA.md's propagation
+// formulas exactly. scripts/oracle_positions.py is an independent
+// Python re-implementation of that same documented formula (written
+// from the DATA_SCHEMA.md description, not ported from this file) and
+// checks it for real against live JPL Horizons vectors for
+// Earth/Jupiter/Saturn at the data's own reference epoch — all three
+// currently pass, within 0.005-0.27% of orbital radius. The oracle does
+// not read or execute this file; it validates the shared documented
+// formula, not this JS code directly, so if you change the math here,
+// update DATA_SCHEMA.md and oracle_positions.py to match or this
+// verification stops meaning anything. Re-run:
+//   python3 ~/.local/libexec/macmini_ram_admission.py run \
+//     --job orrery_oracle_build --kind heavy -- \
+//     python3 scripts/oracle_positions.py
 
 export const DEG2RAD = Math.PI / 180;
 export const AU_KM = 149597870.7;

@@ -77,7 +77,7 @@ def strip_tags(s):
 
 
 def parse_phys_par(html):
-    """Parse the physical-parameters HTML table. Returns {name: {radius_km(mean), mass_kg, rotation_period_hr, orbital_period_days, albedo}}."""
+    """Parse the physical-parameters HTML table. Returns {name: {radius_km(mean), mass_kg, rotation_period_hr, albedo}}."""
     tbody_start = html.find("<tbody>")
     tbody_end = html.find("</tbody>")
     tbody = html[tbody_start:tbody_end]
@@ -99,7 +99,6 @@ def parse_phys_par(html):
         mean_radius_km = numval(cells[2])
         mass_1e24 = numval(cells[3])
         rotation_period_d = numval(cells[5])
-        orbital_period_y = numval(cells[6])
         albedo = numval(cells[8])
         key = "EM Bary" if name == "Earth" else name
         out[key] = {
@@ -107,7 +106,6 @@ def parse_phys_par(html):
             "mass_kg": mass_1e24 * 1e24 if mass_1e24 is not None else None,
             "rotation_period_hr": abs(rotation_period_d) * 24 if rotation_period_d is not None else None,
             "retrograde": rotation_period_d is not None and rotation_period_d < 0,
-            "orbital_period_days": orbital_period_y * 365.25 if orbital_period_y is not None else None,
             "albedo": albedo,
         }
     return out
@@ -143,9 +141,13 @@ def main():
 
     sun = {
         "name": "Sun",
-        "radius_km": 696000,
-        "mass_kg": 1.98892e30,
-        "note": "radius/mass from IAU nominal solar values (published constant, not a JPL SSD table row)",
+        # radius_km filled by add_pole_data.py (from the same pck00011.tpc it
+        # already fetches for pole data) and mass_kg by add_sun_mass.py (from
+        # JPL's astro_par.html GM_sun, converted via mass = GM/G) — both real
+        # fetched sources, not hardcoded here. Left null until those run so a
+        # stale/wrong placeholder can never ship if either script is skipped.
+        "radius_km": None,
+        "mass_kg": None,
     }
 
     data = {

@@ -41,6 +41,15 @@ def parse_triplet(text, naif_id, key):
     return nums
 
 
+def sun_radius_km(text):
+    # Same kernel; a triplet like other bodies' *_RADII, all three equal for
+    # a sphere. This file's own commentary flags the 696000 figure still
+    # seen in older sources as the outdated 2009 IAU value — 695700 is what
+    # this kernel actually loads (\begindata) as current.
+    r = parse_triplet(text, "10", "RADII")
+    return r[0] if r else None
+
+
 def main():
     text, source = fetch_pck()
     data = json.loads((DATA_OUT / "data.json").read_text())
@@ -60,6 +69,11 @@ def main():
         }
 
     data["sun"]["pole"] = pole_for(NAIF_ID["sun"])
+    radius = sun_radius_km(text)
+    if radius:
+        data["sun"]["radius_km"] = radius
+    else:
+        print("WARNING: no Sun radius found in pck00011.tpc")
     filled = 0
     for p in data["planets"]:
         pole = pole_for(NAIF_ID[p["id"]])

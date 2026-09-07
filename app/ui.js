@@ -70,6 +70,9 @@ async function boot() {
   playBtn.addEventListener("click", () => {
     clock.playing = !clock.playing;
     playBtn.innerHTML = clock.playing ? "&#10073;&#10073;" : "&#9658;";
+    const label = clock.playing ? "Pause" : "Play";
+    playBtn.title = label;
+    playBtn.setAttribute("aria-label", label);
   });
 
   document.getElementById("now-btn").addEventListener("click", () => {
@@ -97,7 +100,7 @@ async function boot() {
           `<div class="source-row"><a href="${s.url}" target="_blank" rel="noopener">${s.url}</a><span class="source-meta">fetched ${(s.fetched_utc || "").slice(0, 10)} · ${(s.supplies || []).join(", ")}</span></div>`
         ).join("");
         sourcesPanel.innerHTML = `<h3>Sources &amp; Method</h3>
-          <p>Every position, size, and orbit here traces to a fetched, hashed source below — nothing is estimated or invented. Moon orbits given in a planet's equatorial or Laplace-plane frame are rotated into the shared ecliptic frame using that planet's real pole orientation; for Laplace-frame moons this is a disclosed approximation (exact orbit shape/period, plane orientation can differ by up to a few degrees for the outer/irregular satellites). Saturn's rings, textures, and star sky are separately credited below.</p>
+          <p>Every position, size, and orbit here traces to a fetched, hashed source below — nothing is estimated or invented. Moon orbits given in a planet's equatorial or Laplace-plane frame are rotated into the shared ecliptic frame using that planet's real pole orientation; for Laplace-frame moons this is a disclosed approximation (exact orbit shape/period, plane orientation can differ by up to a few degrees for the outer/irregular satellites). Surface textures and the star sky are a separate, CC-licensed asset set, credited below.</p>
           <div class="source-list">${rows}</div>
           <p class="credit">Surface textures &amp; sky: Solar System Scope (solarsystemscope.com), CC BY 4.0.</p>`;
         sourcesLoaded = true;

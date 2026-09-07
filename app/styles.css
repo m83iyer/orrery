@@ -66,6 +66,7 @@ html, body {
 .body-label.dim { color: var(--ink-soft); font-weight: 500; font-size: 10px; opacity: 0.85; }
 .body-label:hover { color: #000; }
 .body-label.selected { color: var(--accent); }
+.body-label:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 3px; }
 
 #hud {
   position: fixed;
@@ -174,5 +175,7 @@ html, body {
 @media (max-width: 640px) {
   .top-bar { flex-wrap: wrap; }
   .nav-select { flex: 1 1 100%; order: 3; }
-  .date-readout { min-width: 0; }
+  .time-bar { flex-wrap: wrap; justify-content: center; width: min(300px, calc(100vw - 28px)); }
+  .date-readout { min-width: 0; flex: 1 1 100%; order: 3; }
+  #info-panel { bottom: 132px; max-width: calc(100vw - 28px); }
 }

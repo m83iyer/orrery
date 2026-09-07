@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Orrery</title>
-<link rel="stylesheet" href="styles.css?v=3">
+<link rel="stylesheet" href="styles.css?v=5">
 </head>
 <body>
 <canvas id="gl"></canvas>
@@ -14,10 +14,10 @@
     <div class="wordmark">ORRERY</div>
     <select id="nav-select" class="nav-select" aria-label="Jump to a body"></select>
     <button id="sources-btn" class="chip-btn" title="Sources &amp; Method">Sources</button>
-    <button id="help-btn" class="chip-btn" title="Controls">?</button>
+    <button id="help-btn" class="chip-btn" title="Controls" aria-label="Controls">?</button>
   </div>
   <div class="time-bar panel">
-    <button id="play-btn" class="icon-round" title="Play/Pause">&#9658;</button>
+    <button id="play-btn" class="icon-round" title="Play" aria-label="Play">&#9658;</button>
     <select id="speed-select" class="speed-select" aria-label="Time speed"></select>
     <span id="date-readout" class="date-readout"></span>
     <button id="now-btn" class="chip-btn" title="Jump to now">Now</button>
@@ -28,15 +28,15 @@
   <h3>Controls</h3>
   <ul>
     <li><b>Drag</b> — look around</li>
-    <li><b>Scroll</b> — move forward / back</li>
+    <li><b>Scroll / pinch</b> — move forward / back</li>
     <li><b>W A S D</b> — fly</li>
     <li><b>Q / E</b> — down / up</li>
-    <li><b>Click a label</b> — fly to that body</li>
+    <li><b>Click or tap a label</b> — fly to that body</li>
   </ul>
   <button class="chip-btn" id="help-close">Close</button>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.147.0/three.min.js"></script>
-<script type="module" src="scene.js?v=3"></script>
-<script type="module" src="ui.js?v=3"></script>
+<script type="module" src="scene.js?v=4"></script>
+<script type="module" src="ui.js?v=5"></script>
 </body>
 </html>

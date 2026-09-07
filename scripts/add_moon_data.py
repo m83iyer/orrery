@@ -67,8 +67,38 @@ def parse_elements(html):
             el["node_precession_period_days"] = p_node_yr * 365.25 if p_node_yr else None
         except (ValueError, IndexError):
             continue
+        if planet == "Earth" and sat == "Moon":
+            _fix_moon_apsidal_precession(el, p_apsis_yr)
         out[(planet, sat)] = el
     return out
+
+
+def _fix_moon_apsidal_precession(el, p_apsis_yr_from_table):
+    # JPL SSD's live satellite-elements table currently prints "P apsis (yr)"
+    # = 5.997 for the Moon (-> 2190.4 days), which parses and positions
+    # correctly (verified cell-by-cell against the raw row: this IS column
+    # 14, not a rowspan/alignment bug) but is ~47% off the Moon's actual
+    # mean apsidal precession. This column is evidently JPL's *instantaneous*
+    # apse-line rate at their reference epoch, not a secular mean — the
+    # Moon's apsidal rotation is famously non-uniform (strong solar
+    # perturbation), unlike the SAME row's node-precession column (18.600 yr
+    # here), which agrees with independent sources to within 0.02 years.
+    # Cross-checked against Wikipedia's "Orbit of the Moon" infobox (itself
+    # citing standard lunar-theory references): precession of the line of
+    # apsides = 8.8504 yr, matching DATA_SCHEMA.md's own worked example of
+    # 3231.5 days almost exactly. Use that well-established secular mean —
+    # the app's rendering model rotates arg_peri_deg at a constant rate, so
+    # it needs the steady long-run figure, not one epoch's instantaneous one.
+    corrected_days = 8.8504 * 365.25
+    print(f"NOTE: overriding Moon peri_precession_period_days: table gives {p_apsis_yr_from_table} yr "
+          f"({(p_apsis_yr_from_table or 0) * 365.25:.1f} d) -> using well-established secular mean "
+          f"8.8504 yr ({corrected_days:.1f} d); see comment in _fix_moon_apsidal_precession for sourcing")
+    el["peri_precession_period_days"] = corrected_days
+    el["peri_precession_note"] = (
+        "JPL SSD's live table value for this field is an instantaneous/osculating rate that "
+        "differs substantially from the Moon's well-established secular mean; overridden to "
+        "8.8504 yr per independent reference (see scripts/add_moon_data.py)."
+    )
 
 
 def parse_phys(html):
@@ -83,6 +113,13 @@ def parse_phys(html):
         gm = first_number(cells[3])
         radius = first_number(cells[4])
         if gm is None or radius is None:
+            continue
+        # JPL prints a clean "0.00000" for satellites whose GM hasn't been
+        # measured yet (e.g. Nereid) — not a real zero-mass body. Keep that
+        # distinguishable as "not yet measured" rather than a literal 0 kg,
+        # which would be indistinguishable from an actual measurement.
+        if abs(gm) < 1e-9:
+            out[(planet, sat)] = {"radius_km": radius, "mass_kg": None, "gm_km3s2": None}
             continue
         mass_kg = (gm * 1e9) / G  # GM in km^3/s^2 -> m^3/s^2, / G -> kg
         out[(planet, sat)] = {"radius_km": radius, "mass_kg": mass_kg, "gm_km3s2": gm}

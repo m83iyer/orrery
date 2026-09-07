@@ -1,4 +1,4 @@
-import { planetPositionAU, osculatingPositionAU, moonPositionKm, julianCenturiesSinceJ2000, daysSinceEpoch, dateToJD, AU_KM, eclipticPoleAndNode, wrapDeg, DEG2RAD } from "./orbits.js?v=3";
+import { planetPositionAU, osculatingPositionAU, moonPositionKm, julianCenturiesSinceJ2000, daysSinceEpoch, dateToJD, AU_KM, eclipticPoleAndNode, wrapDeg, DEG2RAD } from "./orbits.js?v=4";
 
 const THREE = window.THREE;
 if (!THREE) {
@@ -9,7 +9,6 @@ if (!THREE) {
 // ---- constants -------------------------------------------------------
 
 const KM_PER_UNIT = 1000; // 1 Three.js world unit = 1000 km
-const MIN_ZOOM_SURFACE_FACTOR = 1.02;
 const MAX_DIST_KM = 5000 * AU_KM;
 const LABEL_HIDE_PX = 3; // below this apparent radius, show a marker dot instead of a filled sphere-derived label
 
@@ -124,9 +123,19 @@ class Body {
     // every body regardless of actual size).
     const markerPx = Math.max(3, Math.min(13, 3 + 10 * Math.sqrt(this.radiusKm) / Math.sqrt(75000)));
     this.labelEl.style.setProperty("--marker-px", markerPx.toFixed(1) + "px");
+    this.labelEl.setAttribute("role", "button");
+    this.labelEl.setAttribute("tabindex", "0");
+    this.labelEl.setAttribute("aria-label", "Fly to " + this.name);
     this.labelEl.addEventListener("click", (e) => {
       e.stopPropagation();
       selectBody(this);
+    });
+    this.labelEl.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        e.stopPropagation();
+        selectBody(this);
+      }
     });
     document.getElementById("labels").appendChild(this.labelEl);
   }
@@ -369,18 +378,21 @@ addEventListener("pointermove", (e) => {
 // proportional step size gives the same fast-far/precise-close feel;
 // re-aiming at the target each tick keeps it centered as you zoom, so
 // zoom and look never drift apart the way raw dolly-forward could.
-canvas.addEventListener("wheel", (e) => {
-  e.preventDefault();
+// sign > 0 zooms in, sign < 0 zooms out; magnitude01 (0..1) scales the step
+// for gestures that carry their own continuous magnitude (pinch), and
+// defaults to a fixed per-tick step for discrete ones (wheel notch).
+function zoomTowardTarget(sign, magnitude01) {
   flyTo = null;
   const target = selected || bodiesById.get("sun");
+  if (!target) return;
   const targetKm = target.absolutePositionKm(clock.jd);
   const toTarget = { x: targetKm.x - rig.posKm.x, y: targetKm.y - rig.posKm.y, z: targetKm.z - rig.posKm.z };
   const distToCenter = Math.hypot(toTarget.x, toTarget.y, toTarget.z) || 1;
   const distToSurface = Math.max(distToCenter - target.radiusKm, target.radiusKm * 0.02);
   const dirEcl = { x: toTarget.x / distToCenter, y: toTarget.y / distToCenter, z: toTarget.z / distToCenter };
 
-  const moveMag = Math.min(distToSurface * 0.2, MAX_DIST_KM);
-  const move = (e.deltaY > 0 ? -1 : 1) * moveMag;
+  const moveMag = Math.min(distToSurface * 0.2 * (magnitude01 == null ? 1 : magnitude01), MAX_DIST_KM);
+  const move = sign * moveMag;
   // Never cross into the target (would flip which side we're looking from).
   const clamped = Math.min(move, distToSurface - target.radiusKm * 0.02);
   rig.posKm.x += dirEcl.x * clamped;
@@ -392,7 +404,41 @@ canvas.addEventListener("wheel", (e) => {
   const { yaw, pitch } = yawPitchFromWorldDir(lookWorld);
   rig.yaw = yaw;
   rig.pitch = pitch;
+}
+
+canvas.addEventListener("wheel", (e) => {
+  e.preventDefault();
+  zoomTowardTarget(e.deltaY > 0 ? -1 : 1);
 }, { passive: false });
+
+// Two-finger pinch-to-zoom (touch has no wheel event). While a pinch is
+// active we also suppress the single-finger pointermove drag-to-look below,
+// since Pointer Events fire pointermove for every touch including the
+// second finger and would otherwise spin the camera during a pinch.
+let pinch = null; // { startDist }
+function touchDist(touches) {
+  const [a, b] = touches;
+  return Math.hypot(a.clientX - b.clientX, a.clientY - b.clientY);
+}
+canvas.addEventListener("touchstart", (e) => {
+  if (e.touches.length === 2) {
+    rig.dragging = false;
+    pinch = { dist: touchDist(e.touches) };
+  }
+}, { passive: true });
+canvas.addEventListener("touchmove", (e) => {
+  if (e.touches.length === 2 && pinch) {
+    e.preventDefault();
+    const dist = touchDist(e.touches);
+    const delta = dist - pinch.dist;
+    if (Math.abs(delta) > 1) {
+      zoomTowardTarget(delta > 0 ? 1 : -1, Math.min(1, Math.abs(delta) / 60));
+      pinch.dist = dist;
+    }
+  }
+}, { passive: false });
+addEventListener("touchend", (e) => { if (e.touches.length < 2) pinch = null; });
+addEventListener("touchcancel", () => { pinch = null; });
 
 // ---- labels & picking ----------------------------------------------------
 
@@ -456,6 +502,7 @@ function updateInfoPanel(body) {
     <div class="info-row"><span>Radius</span><span>${body.radiusKm.toLocaleString()} km</span></div>
     <div class="info-row"><span>Distance from Sun</span><span>${distFromSunAu} AU</span></div>
     ${body.parent && body.kind === "moon" ? `<div class="info-row"><span>Orbits</span><span>${body.parent.name}</span></div>` : ""}
+    ${body.kind === "planet" && body.def.known_moon_count ? `<div class="info-row"><span>Moons shown</span><span>${body.children.length} of ${body.def.known_moon_count} known</span></div>` : ""}
   `;
 }
 

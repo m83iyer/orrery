@@ -1,14 +1,13 @@
 {
   "meta": {
     "epoch_jd": 2451545.0,
-    "generated_utc": "2026-09-07T10:03:02.709401+00:00",
+    "generated_utc": "2026-09-07T12:45:03.706240+00:00",
     "obliquity_j2000_deg": 23.4392911
   },
   "sun": {
     "name": "Sun",
-    "radius_km": 696000,
-    "mass_kg": 1.98892e+30,
-    "note": "radius/mass from IAU nominal solar values (published constant, not a JPL SSD table row)",
+    "radius_km": 695700.0,
+    "mass_kg": 1.9884992514426046e+30,
     "pole": {
       "ra_deg": 286.13,
       "ra_rate_per_century": 0.0,
@@ -17,6 +16,7 @@
       "pm_deg": 84.176,
       "pm_rate_per_day": 14.1844
     },
+    "gm_m3s2": 1.3271244004127942e+20,
     "texture": "assets/textures/sun.jpg"
   },
   "planets": [
@@ -164,8 +164,9 @@
             "i_deg": 5.16,
             "raan_deg": 125.08,
             "period_days": 27.322,
-            "peri_precession_period_days": 2190.40425,
-            "node_precession_period_days": 6793.650000000001
+            "peri_precession_period_days": 3232.6086,
+            "node_precession_period_days": 6793.650000000001,
+            "peri_precession_note": "JPL SSD's live table value for this field is an instantaneous/osculating rate that differs substantially from the Moon's well-established secular mean; overridden to 8.8504 yr per independent reference (see scripts/add_moon_data.py)."
           },
           "texture": "assets/textures/moon.jpg"
         }
@@ -180,9 +181,7 @@
       },
       "known_moon_count": 1,
       "known_moon_count_source": "JPL SSD satellite elements table, fetched 2026-09-07",
-      "texture": "assets/textures/earth_day.jpg",
-      "night_texture": "assets/textures/earth_night.jpg",
-      "clouds_texture": "assets/textures/earth_clouds.jpg"
+      "texture": "assets/textures/earth_day.jpg"
     },
     {
       "id": "mars",
@@ -840,41 +839,41 @@
       "known_moon_count": 291,
       "known_moon_count_source": "JPL SSD satellite elements table, fetched 2026-09-07",
       "rings": {
-        "inner_km": 66900,
-        "outer_km": 140612,
+        "inner_km": 66900.0,
+        "outer_km": 140612.0,
         "bands": [
           {
             "name": "D Ring",
-            "inner_km": 66900,
-            "outer_km": 74491
+            "inner_km": 66900.0,
+            "outer_km": 74491.0
           },
           {
             "name": "C Ring",
-            "inner_km": 74491,
-            "outer_km": 91975
+            "inner_km": 74491.0,
+            "outer_km": 91975.0
           },
           {
             "name": "B Ring",
-            "inner_km": 91975,
-            "outer_km": 117570
+            "inner_km": 91975.0,
+            "outer_km": 117570.0
           },
           {
             "name": "Cassini Division",
-            "inner_km": 117500,
-            "outer_km": 122050
+            "inner_km": 117500.0,
+            "outer_km": 122050.0
           },
           {
             "name": "A Ring",
-            "inner_km": 122050,
-            "outer_km": 136770
+            "inner_km": 122050.0,
+            "outer_km": 136770.0
           },
           {
             "name": "F Ring",
-            "inner_km": 139826,
-            "outer_km": 140612
+            "inner_km": 139826.0,
+            "outer_km": 140612.0
           }
         ],
-        "source": "PDS Ring-Moon Systems Node, Vital Statistics for Saturn Rings, fetched 2026-09-07",
+        "source": "PDS Ring-Moon Systems Node, Vital Statistics for Saturn's Rings, fetched 2026-09-07",
         "texture": "assets/textures/saturn_ring_alpha.png"
       },
       "texture": "assets/textures/saturn.jpg"
@@ -1194,8 +1193,8 @@
           "id": "nereid",
           "name": "Nereid",
           "radius_km": 170.0,
-          "mass_kg": 0.0,
-          "gm_km3s2": 0.0,
+          "mass_kg": null,
+          "gm_km3s2": null,
           "elements_relative_to_parent": {
             "frame": "ecliptic",
             "a_km": 5513900.0,

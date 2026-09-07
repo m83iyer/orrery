@@ -11,8 +11,8 @@ Contract between `scripts/build_data.py` (produces this) and `app/scene.js`
     "obliquity_j2000_deg": 23.4392911
   },
   "sun": {
-    "radius_km": 696000,
-    "mass_kg": 1.9885e30,
+    "radius_km": 695700,
+    "mass_kg": 1.988499e30,
     "texture": "textures/sun.jpg"
   },
   "planets": [
